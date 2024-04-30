@@ -1622,12 +1622,15 @@ hr {
   transition: 0.6s;
 }
 .preloader .preloader-img img {
-  max-width: 55px;
+  max-width: 100px;
+  margin-left: 4px;
 }
 .preloader .pere-text strong {
   font-weight: 800;
   color: #dca73a;
   text-transform: uppercase;
+  display: grid;
+  place-content: center;
 }
 @-webkit-keyframes zoom {
   0% {

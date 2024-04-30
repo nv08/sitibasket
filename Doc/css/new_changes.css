@@ -1,0 +1,13 @@
+.typed-cursor {
+    font-size: 1em !important;
+    color: #b367ff !important;
+}
+
+.typed__main_heading{
+    display: ruby;
+}
+
+.typed__main_heading > #typed{
+    font-size: 1em;
+    color: #b367ff
+}

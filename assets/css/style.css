@@ -2555,7 +2555,9 @@ hr {
 }
 .slider-area form.search-box .select-form .nice-select.open .list {
   width: 100%;
-  border-radius: 0;
+  border-radius: 10px;
+  max-height: 300px;
+  overflow-y: auto;
   border: 0;
 }
 .slider-area form.search-box .select-form .nice-select::after {
@@ -3346,6 +3348,7 @@ hr {
 .category-listing .single-listing .select-job-items2 .nice-select.open .list {
   width: 100%;
   border-radius: 0;
+  max-height: 250px;
   border: 0;
 }
 .category-listing .single-listing .select-job-items1 .nice-select::after,

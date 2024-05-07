@@ -6,7 +6,6 @@
     <title>Siti Basket</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="manifest" href="site.webmanifest" />
     <link
       rel="shortcut icon"
       type="image/x-icon"
@@ -115,14 +114,14 @@
                 <form action="#" class="search-box mb-100">
                   <div class="select-form">
                     <div class="select-itms">
-                      <select name="select" id="select1">
+                      <select
+                        name="select"
+                        id="select1"
+                        class="select-category"
+                      >
                         <option value="" disabled selected>
-                          What are you finding?
+                          Select a category
                         </option>
-                        <option value="">Categories One</option>
-                        <option value="">Categories Two</option>
-                        <option value="">Categories Three</option>
-                        <option value="">Categories Four</option>
                       </select>
                     </div>
                   </div>
@@ -153,30 +152,20 @@
               <div class="category-listing mb-50">
                 <!-- single one -->
                 <div class="single-listing">
-                  <!-- Select City items start -->
-                  <div class="select-job-items2">
-                    <select name="select2">
-                      <option value="">City</option>
-                      <option value="">Dhaka</option>
-                      <option value="">india</option>
-                      <option value="">UK</option>
-                      <option value="">US</option>
-                      <option value="">Pakistan</option>
-                    </select>
-                  </div>
-                  <!--  Select City items End-->
                   <!-- Select State items start -->
                   <div class="select-job-items2">
-                    <select name="select2">
-                      <option value="">State</option>
-                      <option value="">Dhaka</option>
-                      <option value="">Mirpur</option>
-                      <option value="">Danmondi</option>
-                      <option value="">Rampura</option>
-                      <option value="">Htizill</option>
+                    <select name="select2" class="select-state">
+                      <option value="" selected disabled>Select a state</option>
                     </select>
                   </div>
                   <!--  Select State items End-->
+                  <!-- Select City items start -->
+                  <div class="select-job-items2">
+                    <select name="select2" class="select-city">
+                      <option value="" selected disabled>Select a city</option>
+                    </select>
+                  </div>
+                  <!--  Select City items End-->
                   <!-- Select km items start -->
                   <!-- <div class="select-job-items2">
                     <select name="select2">
@@ -261,13 +250,13 @@
             <div class="col-xl-8 col-lg-8 col-md-6">
               <div class="row">
                 <div class="col-lg-12">
-                  <div class="count mb-35">
+                  <div class="count mb-35 listing-counts">
                     <span>5432 Listings are available</span>
                   </div>
                 </div>
               </div>
               <!--? Popular Directory Start -->
-              <!-- <div class="popular-directorya-area fix">
+              <div class="popular-directorya-area fix">
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="properties properties2 mb-30">
@@ -278,10 +267,10 @@
                               src="assets/img/gallery/properties1.png"
                               alt=""
                           /></a>
-                          <div class="img-text">
+                          <!-- <div class="img-text">
                             <span>$$$</span>
                             <span>Closed</span>
-                          </div>
+                          </div> -->
                           <div class="icon">
                             <img
                               src="assets/img/gallery/categori_icon1.png"
@@ -434,7 +423,7 @@
                     </div>
                   </div>
                 </div>
-              </div> -->
+              </div>
               <!--? Popular Directory End -->
               <!--Pagination Start  -->
               <!-- <div class="pagination-area text-center">
@@ -672,5 +661,8 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
+
+    <!-- updated js -->
+    <script src="./Doc/js/new_changes.js"></script>
   </body>
 </html>

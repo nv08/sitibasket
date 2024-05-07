@@ -2578,6 +2578,7 @@ hr {
   width: 21%;
   border-radius: 6px;
   overflow: hidden;
+  cursor: pointer;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .slider-area form.search-box .search-form {
@@ -3290,17 +3291,16 @@ hr {
   }
 }
 .category-listing {
-  border: 1px solid #ededed;
-  padding: 30px 19px 30px 30px;
+  /* padding: 60px 19px 30px 30px; */
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .category-listing {
-    padding: 30px 19px 30px 16px;
+    /* padding: 30px 19px 30px 16px; */
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .category-listing {
-    padding: 30px 19px 30px 16px;
+    /* padding: 30px 19px 30px 16px; */
   }
 }
 .category-listing .single-listing .input-form input {

@@ -1,0 +1,55 @@
+{
+    "companies": [
+        {
+            "name": "Company Name 2",
+            "address": "Company Address 2",
+            "phone": "Company Phone 2",
+            "city": "Company City 2",
+            "state": "Company State",
+            "location": {
+                "latitude": "Company Latitude",
+                "longitude": "Company Longitude"
+            },
+            "description": "Company Description",
+            "images": [
+                "image1.jpg",
+                "image2.jpg"
+            ],
+            "category": "Company Category 3"
+        },
+        {
+            "name": "Company Name",
+            "address": "Company Address",
+            "phone": "Company Phone",
+            "city": "Company City",
+            "state": "Company State",
+            "location": {
+                "latitude": "Company Latitude",
+                "longitude": "Company Longitude"
+            },
+            "description": "Company Description",
+            "images": [
+                "image1.jpg",
+                "image2.jpg"
+            ],
+            "category": "Company Category 3"
+        },
+        {
+            "name": "Another Company Name",
+            "address": "Another Company Address",
+            "phone": "Another Company Phone",
+            "location": {
+                "latitude": "Another Company Latitude",
+                "longitude": "Another Company Longitude"
+            },
+            "city": "Another Company City",
+            "state": "Another Company State",
+            "description": "Another Company Description",
+            "images": [
+                "image3.jpg",
+                "image4.jpg"
+            ],
+            "category": "Company Category 3"
+        }
+    ]
+}

@@ -66,6 +66,18 @@ class SitiBasket {
   getCityByState(state) {
     return this.stateCityMap[state];
   }
+
+  getTopFiveStatesByNumberOfListings() {
+    const states = this.getStates();
+    const statesWithCount = states.map((state) => {
+      const count = this.data?.companies?.filter(
+        (company) => company.state === state
+      ).length;
+      return { name: state, count };
+    });
+    const sortedStates = statesWithCount.sort((a, b) => b.count - a.count);
+    return sortedStates.slice(0, 5);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -102,6 +114,31 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!data) return;
 
   sitiBasket = new SitiBasket(data);
+
+  // add top cities
+  const topCities = $(".top-cities");
+  if (topCities) {
+    const topFiveStates = sitiBasket.getTopFiveStatesByNumberOfListings();
+    topFiveStates.forEach((state) => {
+      const div = document.createElement("div");
+      div.classList.add("col-lg-6", "col-md-6", "col-sm-6");
+      modifiedStateNameForImage = state.name.split(" ").join("_").toLowerCase();
+      div.innerHTML = `
+        <div class="single-location mb-30">
+          <div class="location-img">
+            <img src='/Doc/data/images/States/${modifiedStateNameForImage}.jpeg' />
+          </div>
+          <div class="location-details">
+            <p>${state.name}</p>
+            <a href="#" class="location-btn"
+              >${state.count} ${state.count === 1 ? "Listing" : "Listings"} </a
+            >
+          </div>
+        </div>
+      `;
+      topCities.append(div);
+    });
+  }
 
   // add categories to select
   const select = $(".select-category");

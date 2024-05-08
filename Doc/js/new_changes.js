@@ -1,4 +1,4 @@
-var sitiBasket
+var sitiBasket;
 
 class SitiBasket {
   constructor(data) {
@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         $(".select-category").val(),
         this.value //refers to the value of the state select
       );
-      const listingsCounts = $(".listing-counts");
-      listingsCounts?.text(companies.length);
+      updateCount(companies.length);
+      renderListingCards(companies);
     });
 
     // add city select change event
@@ -148,8 +148,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         state,
         city
       );
-      const listingsCounts = $(".listing-counts");
-      listingsCounts?.text(companies.length);
+      updateCount(companies.length);
+      renderListingCards(companies);
     });
 
     //category search button click event
@@ -159,15 +159,70 @@ document.addEventListener("DOMContentLoaded", async function () {
       window.location.href = `/listing.html?category=${category}`;
     });
 
-    if (window.location.pathname.endsWith('/listing.html')) {
+    if (window.location.pathname.endsWith("/listing.html")) {
       const params = new URLSearchParams(window.location.search);
-      const category = params.get('category');
-      const categorySelect = $(".select-category")
+      const category = params.get("category");
+      const categorySelect = $(".select-category");
       categorySelect.val(category);
-      categorySelect.niceSelect('update');
+      categorySelect.niceSelect("update");
       const companies = sitiBasket.searchByCategory(category);
-      const listingsCounts = $(".listing-counts");
-      listingsCounts?.text(companies.length);
-  }
+      updateCount(companies.length);
+      renderListingCards(companies);
+    }
   }
 });
+
+const updateCount = (count) => {
+  const listingsCounts = $(".listing-counts > span");
+  listingsCounts.empty();
+  listingsCounts.append(
+    `<b>${count}</b> ${count === 1 ? "listing" : "listings"} found`
+  );
+};
+
+const renderListingCards = (listings) => {
+  const listingsContainer = $(".listings > .row");
+  listingsContainer.empty();
+  listings.forEach((listing) => {
+    const listingCard = renderListingCard(listing);
+    listingsContainer.append(listingCard);
+  });
+};
+
+const renderListingCard = (listing) => {
+  const div = document.createElement("div");
+  div.classList.add("col-lg-6");
+  const onListingClickHandler = () => {
+    window.location.href = `/company.html?id=${listing.id}`;
+  };
+  div.innerHTML = `
+      <div class="properties properties2 mb-30">
+        <div class="properties__card">
+          <div class="properties__img overlay1">
+            <a>
+              <img src=${listing.coverImage} alt="" />
+            </a>
+            <div class="icon">
+              <img src="assets/img/gallery/categori_icon1.png" alt="" />
+            </div>
+          </div>
+          <div class="properties__caption">
+            <h3>
+              <a>${listing.name}</a>
+            </h3>
+            <p>${listing.description}</p>
+          </div>
+          <div class="properties__footer d-flex justify-content-between align-items-center">
+            <div class="restaurant-name">
+              <img src="assets/img/gallery/restaurant-icon.png" alt="" />
+              <h3>${listing.subCategory}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+  `;
+  div
+    .querySelector(".properties__card")
+    .addEventListener("click", onListingClickHandler);
+  return div;
+};

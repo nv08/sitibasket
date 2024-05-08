@@ -11,11 +11,13 @@
                 "longitude": "Company Longitude"
             },
             "description": "Company Description",
+            "coverImage": "image1.jpg",
             "images": [
                 "image1.jpg",
                 "image2.jpg"
             ],
-            "category": "Company Category 3"
+            "category": "Company Category 3",
+            "subCategory": "Food & Beverage"
         },
         {
             "name": "Company Name",
@@ -28,11 +30,13 @@
                 "longitude": "Company Longitude"
             },
             "description": "Company Description",
+            "coverImage": "image1.jpg",
             "images": [
                 "image1.jpg",
                 "image2.jpg"
             ],
-            "category": "Company Category 3"
+            "category": "Company Category 3",
+            "subCategory": "Food & Beverage"
         },
         {
             "name": "Another Company Name",
@@ -45,11 +49,13 @@
             "city": "Another Company City",
             "state": "Another Company State",
             "description": "Another Company Description",
+            "coverImage": "image3.jpg",
             "images": [
                 "image3.jpg",
                 "image4.jpg"
             ],
-            "category": "Company Category 3"
+            "category": "Company Category 3",
+            "subCategory": "Food & Beverage"
         }
     ]
 }

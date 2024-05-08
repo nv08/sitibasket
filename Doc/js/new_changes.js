@@ -9,6 +9,7 @@ class SitiBasket {
   getStateCityMap() {
     const stateCityMap = {};
     this.data?.companies?.forEach((company) => {
+      if (!company.state) return;
       if (!stateCityMap[company.state]) {
         stateCityMap[company.state] = [];
       }
@@ -18,30 +19,44 @@ class SitiBasket {
   }
 
   getDistinctCategories() {
-    const categories = this.data?.companies?.map((company) => company.category);
+    const categories = this.data?.companies
+      ?.map((company) => company.category)
+      .sort();
     const distinctCategories = [...new Set(categories)];
     return distinctCategories;
   }
 
   searchByCategory(category) {
-    return this.data?.companies?.filter(
+    const filteredCompanies = this.data?.companies?.filter(
       (company) => company.category === category
     );
+    if (filteredCompanies.some((company) => company.name)) {
+      return filteredCompanies;
+    }
+    return [];
   }
 
   searchByCategoryAndState(category, state) {
-    return this.data?.companies?.filter(
+    const filteredCompanies = this.data?.companies?.filter(
       (company) => company.category === category && company.state === state
     );
+    if (filteredCompanies.some((company) => company.name)) {
+      return filteredCompanies;
+    }
+    return [];
   }
 
   searchByCategoryAndStateAndCity(category, state, city) {
-    return this.data?.companies?.filter(
+    const filteredCompanies = this.data?.companies?.filter(
       (company) =>
         company.category === category &&
         company.state === state &&
         company.city === city
     );
+    if (filteredCompanies.some((company) => company.name)) {
+      return filteredCompanies;
+    }
+    return [];
   }
 
   getStates() {
@@ -156,7 +171,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     const searchButton = $(".category-search");
     searchButton?.on("click", function () {
       const category = $(".select-category").val();
-      window.location.href = `/listing.html?category=${category}`;
+      window.location.href = `/listing.html?category=${encodeURIComponent(
+        category
+      )}`;
     });
 
     if (window.location.pathname.endsWith("/listing.html")) {
@@ -185,7 +202,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 });
 
-const updateCount = (count) => {
+const updateCount = (count = 0) => {
   const listingsCounts = $(".listing-counts > span");
   listingsCounts.empty();
   listingsCounts.append(
@@ -196,7 +213,7 @@ const updateCount = (count) => {
 const renderListingCards = (listings) => {
   const listingsContainer = $(".listings > .row");
   listingsContainer.empty();
-  listings.forEach((listing) => {
+  listings?.forEach((listing) => {
     const listingCard = renderListingCard(listing);
     listingsContainer.append(listingCard);
   });

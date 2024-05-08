@@ -1,61 +1,25 @@
 {
     "companies": [
         {
-            "name": "Company Name 2",
-            "address": "Company Address 2",
-            "phone": "Company Phone 2",
-            "city": "Company City 2",
-            "state": "Company State",
+            "name": "Arpa's Organics",
+            "address": "Bhopal",
+            "phone": "7067850502",
+            "city": "Bhopal",
+            "state": "Madhya Pradesh",
             "location": {
                 "latitude": "Company Latitude",
                 "longitude": "Company Longitude"
             },
-            "description": "Company Description",
-            "coverImage": "image1.jpg",
+            "coverDescription": "A registered MSME for Urban Agriculture",
+            "coverImage": "/Doc/data/images/Arpa/cover.jpeg",
             "images": [
-                "image1.jpg",
-                "image2.jpg"
+                "/Doc/data/images/Arpa/1.jpeg",
+                "/Doc/data/images/Arpa/cover.jpeg"
             ],
-            "category": "Company Category 3",
-            "subCategory": "Food & Beverage"
-        },
-        {
-            "name": "Company Name",
-            "address": "Company Address",
-            "phone": "Company Phone",
-            "city": "Company City",
-            "state": "Company State",
-            "location": {
-                "latitude": "Company Latitude",
-                "longitude": "Company Longitude"
-            },
-            "description": "Company Description",
-            "coverImage": "image1.jpg",
-            "images": [
-                "image1.jpg",
-                "image2.jpg"
-            ],
-            "category": "Company Category 3",
-            "subCategory": "Food & Beverage"
-        },
-        {
-            "name": "Another Company Name",
-            "address": "Another Company Address",
-            "phone": "Another Company Phone",
-            "location": {
-                "latitude": "Another Company Latitude",
-                "longitude": "Another Company Longitude"
-            },
-            "city": "Another Company City",
-            "state": "Another Company State",
-            "description": "Another Company Description",
-            "coverImage": "image3.jpg",
-            "images": [
-                "image3.jpg",
-                "image4.jpg"
-            ],
-            "category": "Company Category 3",
-            "subCategory": "Food & Beverage"
+            "category": "Organic",
+            "subCategory": "Organic food",
+            "website": "https://google.com",
+            "fullDescription": "<p>Our features:-</p><ul><li>Training and consulting packages</li><li>Home Gardening</li><li>Terrace Gardening</li><li>Farming</li><li>Horticulture</li><li>Hydroponics</li><li>Aquaponics</li><li>Aeroponics & Bioflocks</li></ul><br><p>We help you with :-</p><p>Garden kit for beginners, Gardening kit for home growers, Gardening Accessories for Pot farming, Grow-bag farming, Hanging gardens, Garden decors, fairy gardens, Potting-mix Soil Rejuvenation, Bio Fertilizers, Nurtients, Supplements, Seeds and Saplings. All other accessories and set-ups</p><p>Benefits of Joining Home Harvestors Group-</p><ol><li>Healthy and fresh vegetables.</li><li>Off season and 24x7 availability for personal favorites.</li><li>All Organic vegetables available amongst group members at reasonable prices.</li><li>Additional source of income at convenience of home</li></ol>"
         }
     ]
 }

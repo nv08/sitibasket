@@ -2774,6 +2774,9 @@ hr {
   width: 100%;
   border-radius: 10px 10px 0 0;
   position: relative;
+  max-height: 320px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 .popular-directorya-area .properties__img .img-text {
   position: absolute;
@@ -2808,6 +2811,7 @@ hr {
   font-weight: 500;
   margin-bottom: 6px;
 }
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .popular-directorya-area .properties__caption h3 {
     font-size: 16px;
@@ -3582,6 +3586,8 @@ hr {
 .gallery-img img {
   width: 100%;
   margin-bottom: 30px;
+  border-radius: 12px;
+  object-fit: contain;
 }
 .map img {
   width: 100%;

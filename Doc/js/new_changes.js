@@ -169,6 +169,19 @@ document.addEventListener("DOMContentLoaded", async function () {
       updateCount(companies.length);
       renderListingCards(companies);
     }
+
+    if (window.location.pathname.endsWith("/directory_details.html")) {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const company = sitiBasket.data.companies.find(
+        (company) => company.name === id
+      );
+      if (company) {
+        updateListingDetails(company);
+      } else {
+        window.location.href = "/index.html";
+      }
+    }
   }
 });
 
@@ -193,7 +206,7 @@ const renderListingCard = (listing) => {
   const div = document.createElement("div");
   div.classList.add("col-lg-6");
   const onListingClickHandler = () => {
-    window.location.href = `/company.html?id=${listing.id}`;
+    window.location.href = `/directory_details.html?id=${listing.name}`;
   };
   div.innerHTML = `
       <div class="properties properties2 mb-30">
@@ -210,7 +223,7 @@ const renderListingCard = (listing) => {
             <h3>
               <a>${listing.name}</a>
             </h3>
-            <p>${listing.description}</p>
+            <p>${listing.coverDescription}</p>
           </div>
           <div class="properties__footer d-flex justify-content-between align-items-center">
             <div class="restaurant-name">
@@ -225,4 +238,37 @@ const renderListingCard = (listing) => {
     .querySelector(".properties__card")
     .addEventListener("click", onListingClickHandler);
   return div;
+};
+
+const updateListingDetails = (company) => {
+  //update company name
+  $(".company-name > h3 > a").text(company.name);
+
+  // update company description
+  $(".company-cover-description").text(company.coverDescription);
+
+  // update company website
+  $(".company-website").attr("href", company.website);
+
+  //update company full description
+  $(".company-full-description").html(company.fullDescription);
+
+  //update images
+  const imagesContainer = $(".company-images");
+  imagesContainer.empty();
+  const div = $('<div class="row"></div>');
+  company.images.forEach((image) => {
+    const el = `
+      <div class="col-lg-6" style="overflow:hidden; border-radius: 12px; height: 320px">
+        <img
+        style="width: 100%; height: 100%; object-fit: cover;"
+          src=${image}
+          class="mb-30"
+          alt=""
+        />
+      </div>
+    `;
+    div.append(el);
+    imagesContainer.append(div);
+  });
 };

@@ -72,6 +72,12 @@ class SitiBasket {
 
   getTopFiveStatesByNumberOfListings() {
     const states = this.getStates();
+    const statesToIncludeIfCountLessThanFive = [
+      "Uttar Pradesh",
+      "Maharashtra",
+      "Delhi",
+      "Gujarat",
+    ];
     const statesWithCount = states
       .map((state) => {
         const count = this.data?.companies?.filter(
@@ -81,8 +87,30 @@ class SitiBasket {
         return { name: state, count };
       })
       .filter(Boolean);
+
+    if (statesWithCount.length < 5) {
+      statesToIncludeIfCountLessThanFive.forEach((state) => {
+        if (!statesWithCount.some((s) => s.name === state)) {
+          const count = this.data?.companies?.filter(
+            (company) => company.state === state
+          ).length;
+          statesWithCount.push({ name: state, count });
+        }
+      });
+    }
     const sortedStates = statesWithCount.sort((a, b) => b.count - a.count);
     return sortedStates.slice(0, 5);
+  }
+
+  getListingCountString(count) {
+    switch (count) {
+      case 0:
+        return "";
+      case 1:
+        return "1 Listing";
+      default:
+        return `${count} Listings`;
+    }
   }
 }
 
@@ -141,9 +169,13 @@ document.addEventListener("DOMContentLoaded", async function () {
           </div>
           <div class="location-details">
             <p>${state.name}</p>
-            <a href="#" class="location-btn"
-              >${state.count} ${state.count === 1 ? "Listing" : "Listings"} </a
-            >
+            ${
+              sitiBasket.getListingCountString(state.count) === "" ? "" : (
+                `<a href="#" class="location-btn">
+                  ${sitiBasket.getListingCountString(state.count)}
+                </a>`
+              )
+            }
           </div>
         </div>
       `;

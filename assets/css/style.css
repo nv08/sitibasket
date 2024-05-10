@@ -2682,6 +2682,7 @@ hr {
   overflow: hidden;
   position: relative;
   z-index: 0;
+  height: clamp(200px, 50vw, 300px);
 }
 .popular-location .single-location .location-img::before {
   position: absolute;

@@ -52,6 +52,16 @@ class SitiBasket {
     return [];
   }
 
+  searchByStateAndCity(state, city) {
+    const filteredCompanies = this.data?.companies?.filter(
+      (company) => company.state === state && company.city === city
+    );
+    if (filteredCompanies.some((company) => company.name)) {
+      return filteredCompanies;
+    }
+    return [];
+  }
+
   getStates() {
     return Object.keys(this.stateCityMap);
   }
@@ -62,12 +72,15 @@ class SitiBasket {
 
   getTopFiveStatesByNumberOfListings() {
     const states = this.getStates();
-    const statesWithCount = states.map((state) => {
-      const count = this.data?.companies?.filter(
-        (company) => company.state === state
-      ).length;
-      return { name: state, count };
-    });
+    const statesWithCount = states
+      .map((state) => {
+        const count = this.data?.companies?.filter(
+          (company) => company.state === state
+        ).length;
+        if (count === 0) return;
+        return { name: state, count };
+      })
+      .filter(Boolean);
     const sortedStates = statesWithCount.sort((a, b) => b.count - a.count);
     return sortedStates.slice(0, 5);
   }
@@ -193,11 +206,16 @@ document.addEventListener("DOMContentLoaded", async function () {
       const category = $(".select-category").val();
       const state = $(".select-state").val();
       const city = this.value;
-      const companies = sitiBasket.searchByCategoryAndStateAndCity(
-        category,
-        state,
-        city
-      );
+      let companies;
+      if (!category) {
+        companies = sitiBasket.searchByStateAndCity(state, city);
+      } else {
+        companies = sitiBasket.searchByCategoryAndStateAndCity(
+          category,
+          state,
+          city
+        );
+      }
       updateCount(companies.length);
       renderListingCards(companies);
     });

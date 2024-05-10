@@ -1,21 +1,14 @@
 var sitiBasket;
 
 class SitiBasket {
-  constructor(data) {
+  constructor(data, placesData) {
     this.data = data;
+    this.placesData = placesData;
     this.stateCityMap = this.getStateCityMap();
   }
 
   getStateCityMap() {
-    const stateCityMap = {};
-    this.data?.companies?.forEach((company) => {
-      if (!company.state) return;
-      if (!stateCityMap[company.state]) {
-        stateCityMap[company.state] = [];
-      }
-      stateCityMap[company.state].push(company.city);
-    });
-    return stateCityMap;
+    return this.placesData;
   }
 
   getDistinctCategories() {
@@ -109,11 +102,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", async function () {
-  const resp = await fetch("/Doc/data/listing_data.json");
-  const data = await resp.json();
-  if (!data) return;
+  const listingResp = await fetch("/Doc/data/listing_data.json");
+  const data = await listingResp.json();
 
-  sitiBasket = new SitiBasket(data);
+  const placesResp = await fetch("/Doc/data/state_cities_listing.json");
+  const placesData = await placesResp.json();
+
+  if (!data) return;
+  if (!placesData) return;
+
+  sitiBasket = new SitiBasket(data, placesData);
 
   // add top cities
   const topCities = $(".top-cities");

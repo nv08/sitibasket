@@ -3354,7 +3354,10 @@ hr {
   width: 100%;
   border-radius: 0;
   max-height: 250px;
+  overflow: scroll;
+  scrollbar-width: none;
   border: 0;
+  z-index: 2;
 }
 .category-listing .single-listing .select-job-items1 .nice-select::after,
 .category-listing .single-listing .select-job-items2 .nice-select::after {
